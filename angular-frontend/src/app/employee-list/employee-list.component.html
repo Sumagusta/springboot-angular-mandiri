@@ -1,0 +1,26 @@
+<h2 align="center">MASTER KARYAWAN</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Tanggal Lahir</th>
+            <th>Jabatan</th>
+            <th>NIP</th>
+            <th>Jenis Kelamin</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let employee of employees">
+            <td>{{employee.name}}</td>
+            <td>{{employee.birthDate | date:'EEEE, MMMM d, yyyy'}}</td>
+            <td>{{employee.positionId}}</td>
+            <td>{{employee.idNumber}}</td>
+            <td>{{employee.gender}}</td>
+            <td>
+                <button (click) = "updateEmployee(employee.id)" class="btn btn-info"> Update</button>
+                <button (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
