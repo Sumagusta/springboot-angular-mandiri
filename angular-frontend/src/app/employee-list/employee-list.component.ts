@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Employee } from '../employee';
+import { EmployeeDto } from '../employee.dto';
 import { EmployeeService } from '../employee.service';
+//import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-employee-list',
@@ -10,8 +12,9 @@ import { EmployeeService } from '../employee.service';
 })
 export class EmployeeListComponent implements OnInit {
 
-  employees:Employee[];
+  employees:EmployeeDto[];
   constructor(private employeeService: EmployeeService,
+    //private dialog: MatDialog,
     private router: Router) { }
 
   ngOnInit(): void {

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from './employee';
+import { EmployeeDto } from './employee.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class EmployeeService {
    * This feature is frequently used in Angular because it is responsible for handling multiple values, 
    * asynchronous programming in Javascript, and also event handling processes.
    */
-  getEmployeeList(): Observable<Employee[]>{
-    return this.httpClient.get<Employee[]>(`${this.baseURL}`);
+  getEmployeeList(): Observable<EmployeeDto[]>{
+    return this.httpClient.get<EmployeeDto[]>(`${this.baseURL}`);
   }
   createEmployee(employee: Employee): Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`, employee);

@@ -14,9 +14,9 @@
         <tr *ngFor = "let employee of employees">
             <td>{{employee.name}}</td>
             <td>{{employee.birthDate | date:'EEEE, MMMM d, yyyy'}}</td>
-            <td>{{employee.positionId}}</td>
+            <td>{{employee.positionName}}</td>
             <td>{{employee.idNumber}}</td>
-            <td>{{employee.gender}}</td>
+            <td>{{employee.genderName}}</td>
             <td>
                 <button (click) = "updateEmployee(employee.id)" class="btn btn-info"> Update</button>
                 <button (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
