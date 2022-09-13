@@ -3,16 +3,20 @@
     <form (ngSubmit) = "onSubmit()">
     <div class="mb-3">
         <div class="form-group">
-            <label>Name</label>
-            <input type="text" class ="form-control" id = "name"
+            <input placeholder="NAME" type="text" class ="form-control" id = "name"
                 [(ngModel)] = "employee.name" name = "name">
         </div>
     </div>
     <div class="mb-3">
         <div class="form-group">
-            <label>NIP</label>
-            <input type="text" class ="form-control" id = "idNumber"
+            <input placeholder="NIP" type="text" class ="form-control" id = "idNumber"
                 [(ngModel)] = "employee.idNumber" name = "idNumber">
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="form-group">
+            <input placeholder="POSITION" type="text" class ="form-control" id = "positionId"
+                [(ngModel)] = "employee.positionId" name = "positionId">
         </div>
     </div>
         <div class="mb-3">
@@ -29,6 +33,18 @@
                 [(ngModel)] = "employee.gender" name = "gender"> Wanita
             </label>
         </div>
+    </div>
+</div>
+<div class="mb-3">
+    <div class="form-group">
+        <mat-form-field appearance="fill">
+            <mat-label>Pilih tanggal lahir</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)] = "employee.birthDate" name="birthDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          
     </div>
 </div>
 <div class="mb-3">
