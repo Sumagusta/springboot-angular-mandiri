@@ -15,8 +15,9 @@
     </div>
     <div class="mb-3">
         <div class="form-group">
-            <input placeholder="POSITION" type="text" class ="form-control" id = "positionId"
-                [(ngModel)] = "employee.positionId" name = "positionId">
+            <select name="positionName" id="positionName" [(ngModel)] = "employee.positionId">
+                <option *ngFor="let position of positions" value="{{position.id}}">{{position.positionName}}</option>
+            </select>
         </div>
     </div>
         <div class="mb-3">

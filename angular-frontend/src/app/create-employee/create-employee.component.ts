@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
+import { PositionDto } from '../position.dto';
 
 @Component({
   selector: 'app-create-employee',
@@ -11,10 +12,18 @@ import { EmployeeService } from '../employee.service';
 export class CreateEmployeeComponent implements OnInit {
 
   employee: Employee = new Employee();
+  positions: PositionDto[];
   constructor(private employeeService: EmployeeService,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.getPosition();
+  }
+
+  getPosition(){
+    this.employeeService.getPositionList().subscribe(data=>{ // subscribe to receive value from component.service
+      this.positions = data;
+    })
   }
 
   saveEmployee(){

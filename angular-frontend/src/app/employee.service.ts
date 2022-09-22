@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from './employee';
 import { EmployeeDto } from './employee.dto';
+import { PositionDto } from './position.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,11 @@ export class EmployeeService {
   getEmployeeList(): Observable<EmployeeDto[]>{
     return this.httpClient.get<EmployeeDto[]>(`${this.baseURL}`);
   }
+
+  getPositionList(): Observable<PositionDto[]>{
+    return this.httpClient.get<PositionDto[]>(`${this.baseURL}/position`);
+  }
+
   createEmployee(employee: Employee): Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`, employee);
   }
