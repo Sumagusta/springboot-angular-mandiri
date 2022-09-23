@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Employee } from '../employee';
 import { EmployeeDto } from '../employee.dto';
 import { EmployeeService } from '../employee.service';
+import { DialogService } from '../shared/dialog.service';
 //import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 @Component({
@@ -14,7 +15,7 @@ export class EmployeeListComponent implements OnInit {
 
   employees:EmployeeDto[];
   constructor(private employeeService: EmployeeService,
-    //private dialog: MatDialog,
+    private dialogService: DialogService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -34,9 +35,16 @@ export class EmployeeListComponent implements OnInit {
   }
 
   deleteEmployee(id: number){
-    this.employeeService.deleteEmployee(id).subscribe( data => {
-      console.log(data);
-      this.getEmployees();
-    })
+    
+    this.dialogService.openConfirmDialog('Apakah anda akan menghapus data ini?')
+    .afterClosed().subscribe(res => {
+      console.log(res);
+      if(res){
+        this.employeeService.deleteEmployee(id).subscribe( data => {
+          console.log(data);
+          this.getEmployees();
+        })
+      }
+    }); 
   }
 }

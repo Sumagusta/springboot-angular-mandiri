@@ -2,20 +2,55 @@
     <h3> Update Employee </h3>
     <form (ngSubmit) = "onSubmit()">
     
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class ="form-control" id = "name"
-                [(ngModel)] = "employee.name" name = "name">
+        <div class="mb-3">
+            <div class="form-group">
+                <input placeholder="NAME" type="text" class ="form-control" id = "name"
+                    [(ngModel)] = "employee.name" name = "name">
+            </div>
         </div>
-    
-        <div class="form-group">
-            <label>NIP</label>
-            <input type="text" class ="form-control" id = "idNumber"
-                [(ngModel)] = "employee.idNumber" name = "idNumber">
+        <div class="mb-3">
+            <div class="form-group">
+                <input placeholder="NIP" type="text" class ="form-control" id = "idNumber"
+                    [(ngModel)] = "employee.idNumber" name = "idNumber">
+            </div>
         </div>
+        <div class="mb-3">
+            <div class="form-group">
+                <select (change)="getPosition();" name="positionName" id="positionName" [(ngModel)] = "employee.positionId">
+                    <option *ngFor="let position of positions" value="{{position.id}}">{{position.positionName}}</option>
+                </select>
+            </div>
+        </div>
+            <div class="mb-3">
+            <div class="form-group">
+                <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" value="1" id = "gender"
+                    [(ngModel)] = "employee.gender" name = "gender" (change)="checkEmployee()"> Pria
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" value="2" id = "gender"
+                    [(ngModel)] = "employee.gender" name = "gender" (change)="checkEmployee()"> Wanita
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="form-group">
+            <mat-form-field appearance="fill">
+                <mat-label>Pilih tanggal lahir</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)] = "employee.birthDate" name="birthDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              
+        </div>
+    </div>
 <br>
         <button class = "btn btn-success" type ="submit">Submit</button>
 
-    
     </form>
     </div> 

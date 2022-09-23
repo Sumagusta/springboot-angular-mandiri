@@ -12,16 +12,20 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule} from '@angular/material/dialog'
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
-  declarations: [
+  declarations: [ // register object yang menggunakan module dari imports
     AppComponent,
     EmployeeListComponent,
     CreateEmployeeComponent,
-    UpdateEmployeeComponent
+    UpdateEmployeeComponent,
+    MatConfirmDialogComponent
   ],
-  imports: [
+  imports: [ // register object module
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -30,9 +34,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatNativeDateModule,
     MatInputModule,
     MatFormFieldModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatIconModule
+    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[EmployeeListComponent, MatConfirmDialogComponent]
 })
 export class AppModule { }

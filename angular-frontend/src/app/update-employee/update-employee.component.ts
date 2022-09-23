@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
+import { PositionDto } from '../position.dto';
 
 @Component({
   selector: 'app-update-employee',
@@ -12,6 +13,7 @@ export class UpdateEmployeeComponent implements OnInit {
   
   id: number;
   employee: Employee = new Employee();
+  positions: PositionDto[];
   constructor(private employeeService: EmployeeService,
     private route: ActivatedRoute,
     private router: Router) { }
@@ -22,6 +24,18 @@ export class UpdateEmployeeComponent implements OnInit {
     this.employeeService.getEmployeeById(this.id).subscribe(data => {
       this.employee = data;
     }, error => console.log(error));
+    this.getPosition();
+  }
+
+  getPosition(){
+    this.employeeService.getPositionList().subscribe(data=>{ // subscribe to receive value from component.service
+      this.positions = data;
+    })
+  }
+
+  checkEmployee(){
+    var gen = this.employee.gender?.toString()
+    return gen
   }
 
   onSubmit(){
